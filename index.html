@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Psychic Game</title>
+
+    </head>
+        <div>
+            <h1>The Psychic Game</h1>
+            <p ><span>Wins:</span><span id="Wins"></span></p>
+            <p ><span>Losses:</span><span id="Loses"></span></p>
+            <p ><span>Guesses Left:</span><span id="GuessesLeft"></span></p>
+            <p id="YourGuessesSoFar"><span>Your Guesses:</span><span id="name"></span></p>  
+            
+        </div>
+
+        <script type="text/javascript">
+
+            var LetterChoices = ["a", "b", "c" , "d", "e", "f", "g", "h", "i", "j", "j", "l", "m", "n", "o", "p", "q", "r", "s","t", "u", "v", "x", "y", "z"];
+        
+            var winCounter = 0;
+
+            var LosesCounter = 0;
+
+            var GuessesLeft = 10;
+            // counter variables
+            
+
+            //Variables for text inside p
+
+            var WinsText = document.getElementById("Wins");
+            var LosesText = document.getElementById("Loses");
+            var GuessesLeftText = document.getElementById("GuessesLeft");
+            var GuessesSoFarText = document.getElementById("name");
+            
+
+            var computerChoice = LetterChoices[Math.floor(Math.random() * LetterChoices.length)];
+            // This gives you a default random letter from array you need to guess.
+            
+            
+
+            document.onkeyup = function (event) {
+
+                var userGuess = event.key;
+
+                var GuessesSoFar = userGuess;
+
+                // When pressing key, inputs gets compared with computer choice to check if it is the same.
+
+                if(userGuess === computerChoice) {
+                   
+                    winCounter++;
+                    GuessesLeft = 10;
+                    GuessesSoFarText.textContent = "";
+                    alert("You Win!");
+                    
+
+                    } else if(GuessesLeft === 0){
+                        LosesCounter++;
+                        GuessesLeft = 10;
+                        GuessesSoFarText.textContent = "";
+                        alert("You lose :C");
+                        
+                    }
+
+                
+                    
+
+                    GuessesLeftText.textContent =  GuessesLeft--;
+
+                    WinsText.textContent = winCounter;
+
+                    LosesText.textContent = LosesCounter;
+
+                    GuessesSoFarText.innerHTML += userGuess + ", ";
+                    
+
+                    
+
+                   
+                                
+            };
+                
+
+                
+
+
+                
+
+            
+        
+        
+        
+        </script>
+
+
+</html>
